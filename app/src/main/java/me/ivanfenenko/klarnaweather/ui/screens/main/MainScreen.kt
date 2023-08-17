@@ -6,13 +6,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import me.ivanfenenko.klarnaweather.R
 import me.ivanfenenko.klarnaweather.ui.widgets.TopBarWidget
 import me.ivanfenenko.klarnaweather.ui.widgets.WeatherTodayHourlyWidget
 import me.ivanfenenko.klarnaweather.ui.widgets.WeatherTodayWidget
@@ -31,10 +35,15 @@ fun MainScreen(viewModel: MainScreenViewModel) {
 
         when (val loadingStateValue = loadingState.value) {
             is ForecastLoadingState.Error -> {
-                Column {
-                    Text(text = loadingStateValue.errorText)
-                    TextButton(onClick = { viewModel.loadCity() }) {
-                        Text("Retry")
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        modifier = Modifier.padding(horizontal = 32.dp), text = loadingStateValue.errorText
+                    )
+                    TextButton(
+                        onClick = { viewModel.loadCity() }) {
+                        Text(stringResource(R.string.button_retry))
                     }
                 }
             }
