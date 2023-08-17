@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather
+package me.ivanfenenko.klarnaweather.ui
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -15,40 +15,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import me.ivanfenenko.klarnaweather.model.WeatherDaily
 
 
 @Composable
-fun WeatherTodayHourly(
+fun WeatherWeekForecastWidget(
+    weatherDaily: List<WeatherDaily>
 ) {
     Row(
         modifier = Modifier
-            .height(100.dp)
             .horizontalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+            .padding(
+                horizontal = 16.dp
+            ),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        repeat(24) {
+        weatherDaily.forEach { weather ->
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.width(50.dp)
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    "12:00",
-                    modifier = Modifier.padding(
-                        vertical = 4.dp
-                    )
-                )
                 Icon(
-                    painter = painterResource(R.drawable.ic_clear_day),
+                    painter = painterResource(weather.icon.value),
                     contentDescription = null,
                     modifier = Modifier
-                        .height(24.dp)
-                        .width(24.dp)
+                        .height(64.dp)
+                        .width(64.dp)
                 )
-                Text(
-                    " ${it + 1}° ",
-                    modifier = Modifier.padding(vertical = 4.dp)
-                )
+                Text(weather.day)
+                Text("${weather.temperature}°")
             }
         }
     }

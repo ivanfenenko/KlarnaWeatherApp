@@ -1,0 +1,37 @@
+package me.ivanfenenko.klarnaweather.ui
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import me.ivanfenenko.klarnaweather.MainScreenViewModel
+
+@Composable
+fun MainScreen(viewModel: MainScreenViewModel) {
+    Column(
+        Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center
+    ) {
+        val state = viewModel.uiState.collectAsState()
+        when (val value = state.value) {
+            MainScreenState.Loading -> {
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(15.dp)
+                )
+            }
+
+            is MainScreenState.Forecast -> {
+                WeatherTodayWidget(value.weatherNow)
+                WeatherTodayHourlyWidget(value.weatherHourly)
+                WeatherWeekForecastWidget(value.weatherDaily)
+            }
+        }
+    }
+}

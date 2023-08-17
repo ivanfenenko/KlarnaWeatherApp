@@ -3,26 +3,30 @@ package me.ivanfenenko.klarnaweather.model
 enum class WeatherCondition(
     val key: String
 ) {
-    CLEAR_DAY("ic_clear_day"),
-    IC_CLEAR_NIGHT("ic_clear_night"),
-    IC_CLOUDY("ic_cloudy"),
-    IC_FOG("ic_fog"),
-    IC_HAIL("ic_hail"),
-    IC_PARTLY_CLOUDY_DAY("ic_partly_cloudy_day"),
-    IC_PARTLY_CLOUDY_NIGHT("ic_partly_cloudy_night"),
-    IC_RAIN("ic_rain"),
-    IC_RAIN_SNOW("ic_rain_snow"),
-    IC_RAIN_SNOW_SHOWERS_DAY("ic_rain_snow_showers_day"),
-    IC_RAIN_SNOW_SHOWERS_NIGHT("ic_rain_snow_showers_night"),
-    IC_SHOWERS_DAY("ic_showers_day"),
-    IC_SHOWERS_NIGHT("ic_showers_night"),
-    IC_SLEET("ic_sleet"),
-    IC_SNOW("ic_snow"),
-    IC_SNOW_SHOWERS_DAY("ic_snow_showers_day"),
-    IC_SNOW_SHOWERS_NIGHT("ic_snow_showers_night"),
-    IC_THUNDER("ic_thunder"),
-    IC_THUNDER_RAIN("ic_thunder_rain"),
-    IC_THUNDER_SHOWERS_DAY("ic_thunder_showers_day"),
-    IC_THUNDER_SHOWERS_NIGHT("ic_thunder_showers_night"),
-    IC_WIND("ic_wind");
+    CLEAR_DAY("clear-day"),
+    IC_CLEAR_NIGHT("clear-night"),
+    IC_CLOUDY("cloudy"),
+    IC_FOG("fog"),
+    IC_HAIL("hail"),
+    IC_PARTLY_CLOUDY_DAY("partly-cloudy-day"),
+    IC_PARTLY_CLOUDY_NIGHT("partly-cloudy-night"),
+    IC_RAIN("rain"),
+    IC_RAIN_SNOW("rain-snow"),
+    IC_RAIN_SNOW_SHOWERS_DAY("rain-snow-showers-day"),
+    IC_RAIN_SNOW_SHOWERS_NIGHT("rain-snow-showers-night"),
+    IC_SHOWERS_DAY("showers-day"),
+    IC_SHOWERS_NIGHT("showers-night"),
+    IC_SLEET("sleet"),
+    IC_SNOW("snow"),
+    IC_SNOW_SHOWERS_DAY("snow-showers-day"),
+    IC_SNOW_SHOWERS_NIGHT("snow-showers-night"),
+    IC_THUNDER("thunder"),
+    IC_THUNDER_RAIN("thunder-rain"),
+    IC_THUNDER_SHOWERS_DAY("thunder-showers-day"),
+    IC_THUNDER_SHOWERS_NIGHT("thunder-shower-night"),
+    IC_WIND("wind");
+
+    companion object {
+        fun fromKey(key: String) = WeatherCondition.values().first { it.key == key }
+    }
 }

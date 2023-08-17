@@ -20,8 +20,8 @@ enum class Animation(val value: Int) {
     ANIM_THUNDER_SUNNY(R.raw.anim_thunder_sunny);
 
     companion object {
-        fun fromWeatherCondition(key: WeatherCondition) {
-            when (key) {
+        fun fromWeatherCondition(key: WeatherCondition): Animation {
+            return when (key) {
                 WeatherCondition.CLEAR_DAY -> ANIM_CLEAR_DAY
                 WeatherCondition.IC_CLEAR_NIGHT -> ANIM_CLEAR_NIGHT
                 WeatherCondition.IC_CLOUDY -> ANIM_CLOUDY

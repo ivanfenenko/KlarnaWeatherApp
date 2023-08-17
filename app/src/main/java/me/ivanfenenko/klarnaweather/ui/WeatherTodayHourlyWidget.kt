@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather
+package me.ivanfenenko.klarnaweather.ui
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -15,33 +15,42 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import me.ivanfenenko.klarnaweather.model.WeatherHourly
 
 
 @Composable
-fun WeatherWeekForecast(
+fun WeatherTodayHourlyWidget(
+    weatherHourly: List<WeatherHourly>
 ) {
     Row(
         modifier = Modifier
+            .height(100.dp)
             .horizontalScroll(rememberScrollState())
-            .padding(
-                horizontal = 16.dp
-            ),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        val week = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-        week.forEach {
+        weatherHourly.forEach { weather ->
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.width(50.dp)
             ) {
+                Text(
+                    weather.time,
+                    modifier = Modifier.padding(
+                        vertical = 4.dp
+                    )
+                )
                 Icon(
-                    painter = painterResource(R.drawable.ic_hail),
+                    painter = painterResource(weather.icon.value),
                     contentDescription = null,
                     modifier = Modifier
-                        .height(64.dp)
-                        .width(64.dp)
+                        .height(24.dp)
+                        .width(24.dp)
                 )
-                Text(it)
-                Text("${week.indexOf(it)}°")
+                Text(
+                    " ${weather.temperature}° ",
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
             }
         }
     }

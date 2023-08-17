@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather
+package me.ivanfenenko.klarnaweather.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,22 +8,31 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.LottieComposition
 import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
+import me.ivanfenenko.klarnaweather.R
+import me.ivanfenenko.klarnaweather.model.WeatherNow
 
 
 @Composable
-fun WeatherToday(
-    composition: LottieComposition?,
-    progress: Float,
-    cityTitle: String,
-    currentTemperature: String,
-    sunrise: String,
-    sunset: String
+fun WeatherTodayWidget(
+    weatherNow: WeatherNow,
 ) {
+    val composition by rememberLottieComposition(
+        LottieCompositionSpec.RawRes(weatherNow.animation.value)
+    )
+    val progress by animateLottieCompositionAsState(
+        composition,
+        iterations = LottieConstants.IterateForever
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -34,8 +43,8 @@ fun WeatherToday(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(cityTitle)
-        Text(currentTemperature)
+        Text(weatherNow.cityTitle)
+        Text(stringResource(id = R.string.now_temp_format, weatherNow.currentTemperature))
         LottieAnimation(
             composition,
             progress = { progress },
@@ -43,11 +52,11 @@ fun WeatherToday(
         )
         Row {
             Text(
-                sunrise,
+                stringResource(id = R.string.now_sunrise_time, weatherNow.sunrise),
                 modifier = Modifier.padding(horizontal = 4.dp)
             )
             Text(
-                sunset,
+                stringResource(id = R.string.now_sunset_time, weatherNow.sunset),
                 modifier = Modifier.padding(horizontal = 4.dp)
             )
         }
