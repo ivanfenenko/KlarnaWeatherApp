@@ -25,7 +25,11 @@ Icons for weather forecast were provided by weather service. However I am not ve
 - There is no good city / location provider. The list of cities is hardcoded and Berlin is default. Ideally I would need some provider for the city. Maybe by using local Data source for configuration storage. Same for locale and units.
 - UI is not optimised for smalled or larger screens (like fold-ables)
 
-# Architecture: MVVM 
+## Architecture: MVVM 
 Since app is simple I tried to minimise unnecessary layers like (data source / use cases / e.t.c) and focused on minimum necessary packages to keep domain separation.
 
-# Demo
+## Demo
+
+
+https://github.com/ivanfenenko/KlarnaWeatherApp/assets/10911644/b9ee6931-07aa-4fe8-aff8-c51eb8756a9c
+
