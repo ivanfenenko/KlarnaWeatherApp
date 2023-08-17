@@ -5,4 +5,7 @@
     <string name="now_sunset_time">Sunset %1$s °C</string>
     <string name="label_week_forecast">Next 7 days:</string>
     <string name="label_today_forecast">Hourly today:</string>
+    <string name="menu_option_berlin">Berlin</string>
+    <string name="menu_option_london">London</string>
+    <string name="menu_option_amsterdam">Amsterdam</string>
 </resources>
