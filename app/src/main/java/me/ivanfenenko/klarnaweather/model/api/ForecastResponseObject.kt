@@ -12,6 +12,6 @@ data class ForecastResponseObject(
     @SerializedName("tzoffset") val tzoffset: Int? = null,
     @SerializedName("description") val description: String? = null,
     @SerializedName("days") val days: ArrayList<DayForecast> = arrayListOf(),
-    @SerializedName("alerts") val alerts: ArrayList<String> = arrayListOf(),
+//    @SerializedName("alerts") val alerts: ArrayList<String> = arrayListOf(),
     @SerializedName("currentConditions") val currentConditions: CurrentConditions
 )

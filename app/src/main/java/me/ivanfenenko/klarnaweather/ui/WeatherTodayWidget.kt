@@ -20,6 +20,7 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import me.ivanfenenko.klarnaweather.R
 import me.ivanfenenko.klarnaweather.model.WeatherNow
+import me.ivanfenenko.klarnaweather.ui.theme.Typography
 
 
 @Composable
@@ -43,8 +44,14 @@ fun WeatherTodayWidget(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(weatherNow.cityTitle)
-        Text(stringResource(id = R.string.now_temp_format, weatherNow.currentTemperature))
+        Text(
+            text = weatherNow.cityTitle,
+            style = Typography.headlineMedium
+        )
+        Text(
+            style = Typography.headlineSmall,
+            text = stringResource(id = R.string.now_temp_format, weatherNow.currentTemperature)
+        )
         LottieAnimation(
             composition,
             progress = { progress },
@@ -53,11 +60,13 @@ fun WeatherTodayWidget(
         Row {
             Text(
                 stringResource(id = R.string.now_sunrise_time, weatherNow.sunrise),
-                modifier = Modifier.padding(horizontal = 4.dp)
+                modifier = Modifier.padding(horizontal = 4.dp),
+                style = Typography.bodyMedium
             )
             Text(
                 stringResource(id = R.string.now_sunset_time, weatherNow.sunset),
-                modifier = Modifier.padding(horizontal = 4.dp)
+                modifier = Modifier.padding(horizontal = 4.dp),
+                style = Typography.bodyMedium
             )
         }
     }

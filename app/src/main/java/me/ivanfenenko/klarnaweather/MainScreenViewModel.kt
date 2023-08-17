@@ -3,8 +3,10 @@ package me.ivanfenenko.klarnaweather
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -25,7 +27,10 @@ class MainScreenViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) : ViewModel() {
 
-    val uiState: StateFlow<MainScreenState> = weatherRepository
+    private val _refreshState = MutableStateFlow(false)
+    val refreshState: StateFlow<Boolean> = _refreshState.asStateFlow()
+
+    val weatherState: StateFlow<MainScreenState> = weatherRepository
         .currentWeatherForecast.map { forecastResponseObject ->
             forecastResponseObject.toState()
         }.stateIn(
@@ -40,6 +45,13 @@ class MainScreenViewModel @Inject constructor(
         }
     }
 
+    fun refresh(city: String) {
+        viewModelScope.launch {
+            viewModelScope.launch {
+                weatherRepository.loadWeatherForecastForCity(city)
+            }
+        }
+    }
     fun changeCity(city: String) {
         viewModelScope.launch {
             weatherRepository.loadWeatherForecastForCity(city)

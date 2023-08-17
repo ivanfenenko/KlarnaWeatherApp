@@ -3,4 +3,6 @@
     <string name="now_temp_format">%1$s °C</string>
     <string name="now_sunrise_time">Sunrise %1$s</string>
     <string name="now_sunset_time">Sunset %1$s °C</string>
+    <string name="label_week_forecast">Next 7 days:</string>
+    <string name="label_today_forecast">Hourly today:</string>
 </resources>

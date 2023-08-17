@@ -1,5 +1,6 @@
 package me.ivanfenenko.klarnaweather.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,35 +15,57 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import me.ivanfenenko.klarnaweather.R
 import me.ivanfenenko.klarnaweather.model.WeatherDaily
+import me.ivanfenenko.klarnaweather.ui.theme.Typography
 
 
 @Composable
 fun WeatherWeekForecastWidget(
     weatherDaily: List<WeatherDaily>
 ) {
-    Row(
+    Column(
         modifier = Modifier
-            .horizontalScroll(rememberScrollState())
-            .padding(
-                horizontal = 16.dp
-            ),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 8.dp),
     ) {
-        weatherDaily.forEach { weather ->
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Icon(
-                    painter = painterResource(weather.icon.value),
-                    contentDescription = null,
+        Text(
+            text = stringResource(R.string.label_week_forecast),
+            style = Typography.bodyMedium
+        )
+        Row(
+            modifier = Modifier
+                .horizontalScroll(rememberScrollState())
+                .padding(
+                    horizontal = 16.dp
+                ),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            weatherDaily.forEach { weather ->
+                Column(
                     modifier = Modifier
-                        .height(64.dp)
-                        .width(64.dp)
-                )
-                Text(weather.day)
-                Text("${weather.temperature}°")
+                        .clickable(onClick = {})
+                        .padding(4.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        painter = painterResource(weather.icon.value),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(64.dp)
+                            .width(64.dp)
+                    )
+                    Text(
+                        text = weather.day,
+                        style = Typography.labelLarge
+                    )
+                    Text(
+                        text = "${weather.temperature}°",
+                        style = Typography.labelLarge
+                    )
+                }
             }
         }
     }

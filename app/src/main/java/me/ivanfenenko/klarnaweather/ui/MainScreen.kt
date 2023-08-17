@@ -2,6 +2,7 @@ package me.ivanfenenko.klarnaweather.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,7 +18,7 @@ fun MainScreen(viewModel: MainScreenViewModel) {
     Column(
         Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center
     ) {
-        val state = viewModel.uiState.collectAsState()
+        val state = viewModel.weatherState.collectAsState()
         when (val value = state.value) {
             MainScreenState.Loading -> {
                 LinearProgressIndicator(
@@ -26,9 +27,9 @@ fun MainScreen(viewModel: MainScreenViewModel) {
                         .height(15.dp)
                 )
             }
-
             is MainScreenState.Forecast -> {
                 WeatherTodayWidget(value.weatherNow)
+                Spacer(modifier = Modifier.height(50.dp))
                 WeatherTodayHourlyWidget(value.weatherHourly)
                 WeatherWeekForecastWidget(value.weatherDaily)
             }
