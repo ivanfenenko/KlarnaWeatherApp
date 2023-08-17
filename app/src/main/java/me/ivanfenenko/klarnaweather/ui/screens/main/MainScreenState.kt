@@ -1,8 +1,8 @@
-package me.ivanfenenko.klarnaweather.ui
+package me.ivanfenenko.klarnaweather.ui.screens.main
 
-import me.ivanfenenko.klarnaweather.model.WeatherDaily
-import me.ivanfenenko.klarnaweather.model.WeatherHourly
-import me.ivanfenenko.klarnaweather.model.WeatherNow
+import me.ivanfenenko.klarnaweather.ui.model.WeatherDaily
+import me.ivanfenenko.klarnaweather.ui.model.WeatherHourly
+import me.ivanfenenko.klarnaweather.ui.model.WeatherNow
 
 sealed class MainScreenState {
     data object Loading : MainScreenState()

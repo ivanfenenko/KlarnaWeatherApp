@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.ui
+package me.ivanfenenko.klarnaweather.ui.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import me.ivanfenenko.klarnaweather.R
-import me.ivanfenenko.klarnaweather.model.WeatherNow
+import me.ivanfenenko.klarnaweather.ui.model.WeatherNow
 import me.ivanfenenko.klarnaweather.ui.theme.Typography
 
 

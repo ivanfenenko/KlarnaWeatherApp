@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.ui
+package me.ivanfenenko.klarnaweather.ui.widgets
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -18,7 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.ivanfenenko.klarnaweather.R
-import me.ivanfenenko.klarnaweather.model.WeatherHourly
+import me.ivanfenenko.klarnaweather.ui.model.WeatherHourly
 import me.ivanfenenko.klarnaweather.ui.theme.Typography
 
 

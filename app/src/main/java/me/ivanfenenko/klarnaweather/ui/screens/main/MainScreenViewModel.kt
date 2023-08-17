@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather
+package me.ivanfenenko.klarnaweather.ui.screens.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,15 +10,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import me.ivanfenenko.klarnaweather.model.Animation
-import me.ivanfenenko.klarnaweather.model.Icon
-import me.ivanfenenko.klarnaweather.model.WeatherCondition
-import me.ivanfenenko.klarnaweather.model.WeatherDaily
-import me.ivanfenenko.klarnaweather.model.WeatherHourly
-import me.ivanfenenko.klarnaweather.model.WeatherNow
+import me.ivanfenenko.klarnaweather.ui.model.Animation
+import me.ivanfenenko.klarnaweather.ui.model.Icon
+import me.ivanfenenko.klarnaweather.ui.model.WeatherCondition
+import me.ivanfenenko.klarnaweather.ui.model.WeatherDaily
+import me.ivanfenenko.klarnaweather.ui.model.WeatherHourly
+import me.ivanfenenko.klarnaweather.ui.model.WeatherNow
 import me.ivanfenenko.klarnaweather.model.api.ForecastResponseObject
 import me.ivanfenenko.klarnaweather.repository.WeatherRepository
-import me.ivanfenenko.klarnaweather.ui.MainScreenState
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
@@ -94,7 +93,7 @@ fun WeatherCondition.toAnimation(): Animation {
 }
 
 fun WeatherCondition.toIcon(): Icon {
-    return Icon.fromKey(this)
+    return me.ivanfenenko.klarnaweather.ui.model.Icon.fromKey(this)
 }
 
 fun String.toHour(): String {

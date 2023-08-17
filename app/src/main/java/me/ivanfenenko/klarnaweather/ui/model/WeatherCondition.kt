@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.model
+package me.ivanfenenko.klarnaweather.ui.model
 
 enum class WeatherCondition(
     val key: String

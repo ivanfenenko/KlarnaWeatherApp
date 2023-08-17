@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.ui
+package me.ivanfenenko.klarnaweather.ui.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import me.ivanfenenko.klarnaweather.MainScreenViewModel
+import me.ivanfenenko.klarnaweather.ui.widgets.WeatherTodayHourlyWidget
+import me.ivanfenenko.klarnaweather.ui.widgets.WeatherTodayWidget
+import me.ivanfenenko.klarnaweather.ui.widgets.WeatherWeekForecastWidget
 
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel) {

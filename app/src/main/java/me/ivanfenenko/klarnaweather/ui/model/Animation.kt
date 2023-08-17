@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.model
+package me.ivanfenenko.klarnaweather.ui.model
 
 import me.ivanfenenko.klarnaweather.R
 

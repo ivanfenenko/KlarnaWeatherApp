@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather.model
+package me.ivanfenenko.klarnaweather.ui.model
 
 data class WeatherHourly(
     val time: String,

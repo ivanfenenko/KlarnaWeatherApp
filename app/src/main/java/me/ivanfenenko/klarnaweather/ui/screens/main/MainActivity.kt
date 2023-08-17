@@ -1,4 +1,4 @@
-package me.ivanfenenko.klarnaweather
+package me.ivanfenenko.klarnaweather.ui.screens.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import me.ivanfenenko.klarnaweather.ui.MainScreen
 import me.ivanfenenko.klarnaweather.ui.theme.KlarnaWeatherTheme
 
 @AndroidEntryPoint
@@ -23,7 +22,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             KlarnaWeatherTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
